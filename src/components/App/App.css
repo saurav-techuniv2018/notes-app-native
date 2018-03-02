@@ -1,0 +1,14 @@
+* {
+  font-family: 'Helvetica Neue', Georgia, 'Times New Roman', Times, serif;
+}
+
+/* Full Height */
+
+#root {
+  height: 100vh;
+}
+
+body {
+  margin: 0;
+  height: 100%;
+}

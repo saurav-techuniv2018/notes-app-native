@@ -1,0 +1,5 @@
+.RemainingCharacters {
+  flex-grow: 1;
+  display: inline-block;
+  text-align: right;
+}

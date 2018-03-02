@@ -1,0 +1,26 @@
+
+/* Flex Layout */
+
+.AllNotes-container {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.AllNotes-main {
+  flex-grow: 1;
+  background-color: #E9E9EF;
+  display: flex;
+  flex-direction: column;
+  overflow: scroll;
+}
+
+.AllNotes-header {
+  background-color: #B0B0E8
+}
+
+/* Margins */
+
+.AllNotes-header, .AllNotes-main {
+  padding: 8px;
+}

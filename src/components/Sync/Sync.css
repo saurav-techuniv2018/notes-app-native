@@ -1,0 +1,10 @@
+.Sync {
+  display: flex;
+  flex-direction: row;
+}
+
+.Sync-title {
+  display: inline-block;
+  margin: 0;
+  flex-grow: 1;
+}
