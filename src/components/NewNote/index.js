@@ -1,5 +1,5 @@
-import { PropTypes } from 'prop-types';
 import React from 'react';
+import { PropTypes } from 'prop-types';
 import { Button, View, Text, TextInput } from 'react-native';
 
 import MaterialIcon from '../MaterialIcon';
@@ -7,21 +7,9 @@ import RemainingCharacters from '../RemainingCharacters';
 
 import { noteShape } from '../../models/note';
 
-// import './NewNote.css';
-
 class NewNote extends React.Component {
   constructor(props) {
     super(props);
-
-    NewNote.propTypes = {
-      title: PropTypes.string.isRequired,
-      noteTitlePlaceholder: PropTypes.string.isRequired,
-      newNoteIcon: PropTypes.string.isRequired,
-      charactersLimit: PropTypes.number.isRequired,
-      noteHint: PropTypes.string.isRequired,
-      onSave: PropTypes.func.isRequired,
-      note: PropTypes.shape(noteShape).isRequired,
-    };
 
     this.state = {
       limitReaching: false,
@@ -102,5 +90,15 @@ class NewNote extends React.Component {
     );
   }
 }
+
+NewNote.propTypes = {
+  title: PropTypes.string.isRequired,
+  noteTitlePlaceholder: PropTypes.string.isRequired,
+  newNoteIcon: PropTypes.string.isRequired,
+  charactersLimit: PropTypes.number.isRequired,
+  noteHint: PropTypes.string.isRequired,
+  onSave: PropTypes.func.isRequired,
+  note: PropTypes.shape(noteShape).isRequired,
+};
 
 export default NewNote;

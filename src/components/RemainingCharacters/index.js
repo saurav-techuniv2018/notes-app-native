@@ -1,23 +1,14 @@
-import { PropTypes } from 'prop-types';
 import React from 'react';
+import { PropTypes } from 'prop-types';
 import { Text } from 'react-native';
-// import './RemainingCharacters.css';
 
-class RemainingCharacters extends React.Component {
-  constructor(props) {
-    super(props);
+const RemainingCharacters = props => (
+  <Text className="RemainingCharacters">{`${props.count} ${props.itemLabel}`}</Text>
+);
 
-    RemainingCharacters.propTypes = {
-      count: PropTypes.number.isRequired,
-      itemLabel: PropTypes.string.isRequired,
-    };
-  }
-
-  render() {
-    return (
-      <Text className="RemainingCharacters">{`${this.props.count} ${this.props.itemLabel}`}</Text>
-    );
-  }
-}
+RemainingCharacters.propTypes = {
+  count: PropTypes.number.isRequired,
+  itemLabel: PropTypes.string.isRequired,
+};
 
 export default RemainingCharacters;

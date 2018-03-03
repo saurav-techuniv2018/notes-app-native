@@ -3,13 +3,12 @@ import { connect } from 'react-redux';
 import { PropTypes } from 'prop-types';
 import { Text, View } from 'react-native';
 
-import { putNotes } from '../../redux/actions';
-
 import MaterialIcon from '../MaterialIcon';
-import { getNotes, setNotes } from '../../lib/sync-notes';
-import { noteShape } from '../../models/note';
 
-// import './Sync.css';
+import { putNotes } from '../../redux/actions';
+import { getNotes, setNotes } from '../../lib/sync-notes';
+
+import { noteShape } from '../../models/note';
 
 class Sync extends React.Component {
   static mapStateToProps = state => ({
@@ -19,15 +18,6 @@ class Sync extends React.Component {
   static mapDispatchToProps = dispatch => ({
     putNotes: notes => dispatch(putNotes(notes)),
   });
-
-  constructor(props) {
-    super(props);
-
-    Sync.propTypes = {
-      notes: PropTypes.arrayOf(PropTypes.shape(noteShape)).isRequired,
-      putNotes: PropTypes.func.isRequired,
-    };
-  }
 
   syncNotes() {
     if (this.props.notes.length === 0) {
@@ -60,5 +50,10 @@ class Sync extends React.Component {
     </View>
   );
 }
+
+Sync.propTypes = {
+  notes: PropTypes.arrayOf(PropTypes.shape(noteShape)).isRequired,
+  putNotes: PropTypes.func.isRequired,
+};
 
 export default connect(Sync.mapStateToProps, Sync.mapDispatchToProps)(Sync);

@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { PropTypes } from 'prop-types';
 import { connect } from 'react-redux';
@@ -11,7 +10,6 @@ import { getNotes, setNotes } from '../../lib/sync-notes';
 import actionGenerator, { setCurrentNote, putNotes } from '../../redux/actions';
 import { SYNC_DATA_STARTED, SYNC_DATA_SUCCEEDED, SYNC_DATA_FAILED } from '../../redux/actions/app';
 
-// import './NotesApp.css';
 import { noteShape } from '../../models/note';
 
 class NotesApp extends React.Component {

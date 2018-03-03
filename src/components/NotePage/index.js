@@ -12,8 +12,6 @@ import Footer from '../Footer';
 
 import { noteShape } from '../../models/note';
 
-// import './NotePage.css';
-
 class NotePage extends React.Component {
   static mapDispatchToProps = dispatch => ({
     onSave: ((note, ownProps) => {
@@ -22,15 +20,6 @@ class NotePage extends React.Component {
       ownProps.history.push('/all');
     }),
   });
-
-  constructor(props) {
-    super(props);
-
-    NotePage.propTypes = {
-      note: PropTypes.shape(noteShape).isRequired,
-      onSave: PropTypes.func.isRequired,
-    };
-  }
 
   render = () => (
     <View className="NotePage-container">
@@ -55,5 +44,10 @@ class NotePage extends React.Component {
     </View>
   );
 }
+
+NotePage.propTypes = {
+  note: PropTypes.shape(noteShape).isRequired,
+  onSave: PropTypes.func.isRequired,
+};
 
 export default withRouter(connect(null, NotePage.mapDispatchToProps)(NotePage));

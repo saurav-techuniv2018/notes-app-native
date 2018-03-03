@@ -4,7 +4,6 @@ import { connect } from 'react-redux';
 import { withRouter } from 'react-router-native';
 import { Text, View } from 'react-native';
 
-// import './NewItem.css';
 import MaterialIcon from '../MaterialIcon';
 import { noteShape } from '../../models/note';
 import { setCurrentNote } from '../../redux/actions';

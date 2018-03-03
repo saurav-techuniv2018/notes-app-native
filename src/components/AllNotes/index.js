@@ -1,5 +1,5 @@
-import { PropTypes } from 'prop-types';
 import React from 'react';
+import { PropTypes } from 'prop-types';
 import { connect } from 'react-redux';
 import { View } from 'react-native';
 import { withRouter } from 'react-router-native';
@@ -11,20 +11,10 @@ import Sync from '../Sync';
 
 import { noteShape } from '../../models/note';
 
-// import './AllNotes.css';
-
 class AllNotes extends React.Component {
   static mapStateToProps = state => ({
     notes: [...state.notes.allNotes],
   });
-
-  constructor(props) {
-    super(props);
-
-    AllNotes.propTypes = {
-      notes: PropTypes.arrayOf(PropTypes.shape(noteShape)).isRequired,
-    };
-  }
 
   renderNotes = () => this.props.notes.reduce((accumulator, note) => {
     const notes = accumulator;
@@ -54,5 +44,10 @@ class AllNotes extends React.Component {
     </View>
   );
 }
+
+AllNotes.propTypes = {
+  notes: PropTypes.arrayOf(PropTypes.shape(noteShape)).isRequired,
+  history: PropTypes.object.isRequired,
+};
 
 export default withRouter(connect(AllNotes.mapStateToProps, null)(AllNotes));
