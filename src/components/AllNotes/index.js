@@ -2,6 +2,7 @@ import { PropTypes } from 'prop-types';
 import React from 'react';
 import { connect } from 'react-redux';
 import { View } from 'react-native';
+import { withRouter } from 'react-router-native';
 
 import Footer from '../Footer';
 import NoteItem from '../NoteItem';
@@ -17,16 +18,11 @@ class AllNotes extends React.Component {
     notes: [...state.notes.allNotes],
   });
 
-  static mapDispatchToProps = () => ({
-    switchPage: (ownProps) => { ownProps.history.push('/new'); },
-  });
-
   constructor(props) {
     super(props);
 
     AllNotes.propTypes = {
       notes: PropTypes.arrayOf(PropTypes.shape(noteShape)).isRequired,
-      switchPage: PropTypes.func.isRequired,
     };
   }
 
@@ -53,10 +49,10 @@ class AllNotes extends React.Component {
       </View>
       <Footer
         label="Create New Note"
-        onClick={() => this.props.history.push('/new-note')}
+        onClick={() => this.props.history.push('/new')}
       />
     </View>
   );
 }
 
-export default connect(AllNotes.mapStateToProps, AllNotes.mapDispatchToProps)(AllNotes);
+export default withRouter(connect(AllNotes.mapStateToProps, null)(AllNotes));

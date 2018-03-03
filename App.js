@@ -9,7 +9,7 @@ import { NativeRouter } from 'react-router-native';
 import { Provider } from 'react-redux';
 
 import initStore from './src/redux/stores';
-import NotesApp from './src/components/App';
+import NotesApp from './src/components/NotesApp';
 
 const store = initStore();
 

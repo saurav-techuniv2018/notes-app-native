@@ -2,21 +2,19 @@
 import React from 'react';
 import { PropTypes } from 'prop-types';
 import { connect } from 'react-redux';
-import { Route, withRouter, BackButton } from 'react-router-native';
-import { View } from 'react-native';
+import { Card, Navigation } from 'react-router-navigation';
 
 import NotePage from '../NotePage';
 import AllNotes from '../AllNotes';
-import Nav from '../Nav';
 
 import { getNotes, setNotes } from '../../lib/sync-notes';
 import actionGenerator, { setCurrentNote, putNotes } from '../../redux/actions';
 import { SYNC_DATA_STARTED, SYNC_DATA_SUCCEEDED, SYNC_DATA_FAILED } from '../../redux/actions/app';
 
-// import './App.css';
+// import './NotesApp.css';
 import { noteShape } from '../../models/note';
 
-class App extends React.Component {
+class NotesApp extends React.Component {
   static mapStateToProps = state => ({
     currentNote: {
       ...state.app.currentNote,
@@ -61,12 +59,12 @@ class App extends React.Component {
   }
 
   render = () => (
-    <View>
-      <BackButton />
-      <Route exact path="/" component={Nav} />
-      <Route path="/all" component={AllNotes} />
-      <Route
-        path="/new-note"
+    <Navigation
+      title="Notes App"
+    >
+      <Card exact path="/" component={AllNotes} />
+      <Card
+        path="/new"
         render={(routeProps => (
           <NotePage
             {...routeProps}
@@ -77,11 +75,11 @@ class App extends React.Component {
           />
         ))}
       />
-    </View>
+    </Navigation>
   );
 }
 
-App.propTypes = {
+NotesApp.propTypes = {
   fetchNotesStarted: PropTypes.func.isRequired,
   fetchNotesSucceeded: PropTypes.func.isRequired,
   fetchNotesFailed: PropTypes.func.isRequired,
@@ -89,4 +87,4 @@ App.propTypes = {
   notes: PropTypes.arrayOf(PropTypes.shape(noteShape)).isRequired,
 };
 
-export default withRouter(connect(App.mapStateToProps, App.mapDispatchToProps)(App));
+export default connect(NotesApp.mapStateToProps, NotesApp.mapDispatchToProps)(NotesApp);
