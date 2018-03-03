@@ -1,7 +1,9 @@
+
 import React from 'react';
 import { PropTypes } from 'prop-types';
 import { connect } from 'react-redux';
-import { withRouter, Route } from 'react-router-native';
+import { Route, withRouter, BackButton } from 'react-router-native';
+import { View } from 'react-native';
 
 import NotePage from '../NotePage';
 import AllNotes from '../AllNotes';
@@ -59,39 +61,27 @@ class App extends React.Component {
   }
 
   render = () => (
-    <StackRouter>
+    <View>
+      <BackButton />
       <Route exact path="/" component={Nav} />
+      <Route path="/all" component={AllNotes} />
       <Route
-        path="/new"
-        render={routeProps => (
+        path="/new-note"
+        render={(routeProps => (
           <NotePage
             {...routeProps}
             note={{
-              title: '',
               note: '',
+              title: '',
             }}
           />
-        )}
+        ))}
       />
-      <Route
-        path="/edit-note"
-        render={routeProps => (
-          <NotePage
-            {...routeProps}
-            note={this.props.currentNote}
-          />
-        )}
-      />
-      <Route path="/all" component={AllNotes} />
-    </StackRoute>
+    </View>
   );
 }
 
 App.propTypes = {
-  currentNote: PropTypes.shape({
-    note: PropTypes.string.isRequired,
-    title: PropTypes.string.isRequired,
-  }).isRequired,
   fetchNotesStarted: PropTypes.func.isRequired,
   fetchNotesSucceeded: PropTypes.func.isRequired,
   fetchNotesFailed: PropTypes.func.isRequired,

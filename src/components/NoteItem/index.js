@@ -2,7 +2,7 @@ import React from 'react';
 import { PropTypes } from 'prop-types';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-native';
-import { View } from 'react-native';
+import { Text, View } from 'react-native';
 
 // import './NewItem.css';
 import MaterialIcon from '../MaterialIcon';
@@ -20,7 +20,7 @@ class NoteItem extends React.Component {
   render = () => (
     <View className="NoteItem-container">
       <View className="NoteItem-title-container">
-        <h3 className="NoteItem-title">{this.props.note.title}</h3>
+        <Text className="NoteItem-title">{this.props.note.title}</Text>
         <MaterialIcon
           icon="&#xE254;"
           onClick={() => this.props.onEdit(this.props.note, this.props)}

@@ -1,7 +1,7 @@
 import { PropTypes } from 'prop-types';
 import React from 'react';
 
-import { Button } from 'react-native';
+import { Button, View } from 'react-native';
 // import './Footer.css';
 
 class Footer extends React.Component {
@@ -15,12 +15,13 @@ class Footer extends React.Component {
   }
 
   render = () => (
-    <div className="Footer-container" >
+    <View className="Footer-container" >
       <Button
         className="Footer-button"
         onPress={() => this.props.onClick()}
-        title={this.props.label} />
-    </div>
+        title={this.props.label}
+      />
+    </View>
   );
 }
 export default Footer;

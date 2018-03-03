@@ -1,6 +1,6 @@
 import { PropTypes } from 'prop-types';
 import React from 'react';
-import { Button } from 'react-native';
+import { Button, View, Text, TextInput } from 'react-native';
 
 import MaterialIcon from '../MaterialIcon';
 import RemainingCharacters from '../RemainingCharacters';
@@ -33,15 +33,15 @@ class NewNote extends React.Component {
 
   render() {
     return (
-      <article className="NewNote-container">
-        <section className="NewNote-heading">
-          <h2 className="NewNote-title">{this.props.title}</h2>
+      <View className="NewNote-container">
+        <View className="NewNote-heading">
+          <Text className="NewNote-title">{this.props.title}</Text>
           <Button
             class="NewNote-button"
             title="en"
           />
-        </section>
-        <input
+        </View>
+        <TextInput
           type="text"
           className="NewNote-title-input"
           placeholder={this.props.noteTitlePlaceholder}
@@ -54,11 +54,11 @@ class NewNote extends React.Component {
             }));
           }}
         />
-        <section className="NewNote-note-heading">
-          <h3 className="NewNote-note-hint">{this.props.noteHint}</h3>
+        <View className="NewNote-note-heading">
+          <Text className="NewNote-note-hint">{this.props.noteHint}</Text>
           <MaterialIcon icon={this.props.newNoteIcon} />
-        </section>
-        <textarea
+        </View>
+        <TextInput
           value={this.state.note}
           maxLength={this.state.charactersLimit}
           className={`NewNote-notes ${this.state.limitReaching ? 'NewNote-textarea-warning' : ''}`}
@@ -72,10 +72,10 @@ class NewNote extends React.Component {
             }));
           }}
         />
-        <section className="NewNote-action-section">
+        <View className="NewNote-action-section">
           <Button
             className="NewNote-button"
-            label="Save"
+            title="Save"
             onClick={() => {
               if (
                 this.state.note === '' ||
@@ -97,8 +97,8 @@ class NewNote extends React.Component {
             count={this.state.charactersLimit - this.state.note.length}
             itemLabel="characters"
           />
-        </section>
-      </article>
+        </View>
+      </View>
     );
   }
 }

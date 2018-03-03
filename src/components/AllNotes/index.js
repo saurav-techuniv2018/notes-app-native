@@ -53,7 +53,7 @@ class AllNotes extends React.Component {
       </View>
       <Footer
         label="Create New Note"
-        onClick={() => this.props.switchPage(this.props)}
+        onClick={() => this.props.history.push('/new-note')}
       />
     </View>
   );

@@ -1,6 +1,6 @@
 import { PropTypes } from 'prop-types';
 import React from 'react';
-
+import { Text } from 'react-native';
 // import './RemainingCharacters.css';
 
 class RemainingCharacters extends React.Component {
@@ -15,7 +15,7 @@ class RemainingCharacters extends React.Component {
 
   render() {
     return (
-      <p className="RemainingCharacters">{`${this.props.count} ${this.props.itemLabel}`}</p>
+      <Text className="RemainingCharacters">{`${this.props.count} ${this.props.itemLabel}`}</Text>
     );
   }
 }

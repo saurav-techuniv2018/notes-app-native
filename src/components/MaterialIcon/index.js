@@ -1,6 +1,6 @@
 import React from 'react';
 import { PropTypes } from 'prop-types';
-import { TouchableHighlight, View } from 'react-native';
+import { Button, View } from 'react-native';
 
 // import './MaterialIcon.css';
 
@@ -23,7 +23,11 @@ class MaterialIcon extends React.Component {
   render() {
     return (
       <View className="MaterialIcon-container">
-        <TouchableHighlight onPress={() => this.props.onClick()} />
+        <Button
+          onPress={() => this.props.onClick()}
+          title={this.props.icon}
+        />
+        {/* <TouchableHighlight onPress={() => this.props.onClick()} /> */}
         {/* <span >
           <i
             className="material-icons"

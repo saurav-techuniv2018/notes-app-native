@@ -1,7 +1,7 @@
 // TODO Check result status
 
 const getNotes = () => new Promise((resolve, reject) => {
-  fetch('/api/notes')
+  fetch('http://localhost:8080/api/notes')
     .then(response => response.text())
     .then(json => JSON.parse(json))
     .then((payload) => {
@@ -20,7 +20,7 @@ const setNotes = notes => new Promise((resolve, reject) => {
     notes,
   });
 
-  fetch('/api/notes', {
+  fetch('http://localhost:8080/api/notes', {
     method: 'PUT',
     body: requestPayload,
   })

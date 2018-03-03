@@ -6,8 +6,10 @@ export const container = {
 };
 
 export const header = {
-  fontFamily: '"Helvetica Neue", Georgia, "Times New Roman", Times, serif',
   alignSelf: 'center',
+  fontSize: 48,
+  fontWeight: '800',
+  paddingBottom: 16,
 };
 
 export const link = {

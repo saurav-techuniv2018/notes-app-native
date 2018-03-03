@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { PropTypes } from 'prop-types';
-import { View } from 'react-native';
+import { Text, View } from 'react-native';
 
 import { putNotes } from '../../redux/actions';
 
@@ -49,7 +49,7 @@ class Sync extends React.Component {
 
   render = () => (
     <View className="Sync">
-      <h3 className="Sync-title">Sync Notes</h3>
+      <Text className="Sync-title">Sync Notes</Text>
       <MaterialIcon
         icon="&#xE627;"
         onClick={() => this.syncNotes()}

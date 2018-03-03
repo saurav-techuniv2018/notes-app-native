@@ -4,14 +4,7 @@
  * @flow
  */
 
-import React, { Component } from 'react';
-import {
-  Platform,
-  StyleSheet,
-  Text,
-  View,
-  Button
-} from 'react-native';
+import React from 'react';
 import { NativeRouter } from 'react-router-native';
 import { Provider } from 'react-redux';
 
@@ -20,12 +13,12 @@ import NotesApp from './src/components/App';
 
 const store = initStore();
 
-export default class App extends Component {
-  render = () => (
-    <NativeRouter>
-      <Provider store={store}>
-        <NotesApp />
-      </Provider>
-    </NativeRouter>
-  )
-}
+const App = () => (
+  <NativeRouter>
+    <Provider store={store}>
+      <NotesApp />
+    </Provider>
+  </NativeRouter>
+);
+
+export default App;

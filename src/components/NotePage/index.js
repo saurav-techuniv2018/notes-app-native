@@ -2,7 +2,7 @@ import { PropTypes } from 'prop-types';
 import React from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-native';
-import { View } from 'react-native';
+import { View, Text } from 'react-native';
 
 import { addOrEditNote, setCurrentNote } from '../../redux/actions';
 
@@ -34,10 +34,10 @@ class NotePage extends React.Component {
 
   render = () => (
     <View className="NotePage-container">
-      <header className="NotePage-header">
+      <Text className="NotePage-header">
         <Title value="Start taking notes" />
-      </header>
-      <main className="NotePage-main">
+      </Text>
+      <View className="NotePage-main">
         <NewNote
           title="Note Title"
           noteTitlePlaceholder="Tasks for today"
@@ -47,7 +47,7 @@ class NotePage extends React.Component {
           noteHint="Please type your note below"
           onSave={note => this.props.onSave(note, this.props)}
         />
-      </main>
+      </View>
       <Footer
         label="About Us"
         onClick={() => { }}
