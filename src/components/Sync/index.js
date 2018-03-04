@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { PropTypes } from 'prop-types';
 import { Text, View } from 'react-native';
 
-import MaterialIcon from '../MaterialIcon';
+import Icon from '../Icon';
 
 import { putNotes } from '../../redux/actions';
 import { getNotes, setNotes } from '../../lib/sync-notes';
@@ -40,7 +40,7 @@ class Sync extends React.Component {
   render = () => (
     <View className="Sync">
       <Text className="Sync-title">Sync Notes</Text>
-      <MaterialIcon
+      <Icon
         icon="&#xE627;"
         onClick={() => this.syncNotes()}
         style={{

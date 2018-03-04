@@ -2,7 +2,7 @@ import React from 'react';
 import { PropTypes } from 'prop-types';
 import { Button, View, Text, TextInput } from 'react-native';
 
-import MaterialIcon from '../MaterialIcon';
+import Icon from '../Icon';
 import RemainingCharacters from '../RemainingCharacters';
 
 import { noteShape } from '../../models/note';
@@ -35,7 +35,7 @@ class NewNote extends React.Component {
           placeholder={this.props.noteTitlePlaceholder}
           value={this.state.noteTitle}
           onChange={(e) => {
-            const newTitle = e.target.value;
+            const newTitle = e.nativeEvent.text;
             this.setState(prevState => ({
               ...prevState,
               noteTitle: newTitle,
@@ -44,14 +44,14 @@ class NewNote extends React.Component {
         />
         <View className="NewNote-note-heading">
           <Text className="NewNote-note-hint">{this.props.noteHint}</Text>
-          <MaterialIcon icon={this.props.newNoteIcon} />
+          <Icon icon={this.props.newNoteIcon} />
         </View>
         <TextInput
           value={this.state.note}
           maxLength={this.state.charactersLimit}
           className={`NewNote-notes ${this.state.limitReaching ? 'NewNote-textarea-warning' : ''}`}
           onChange={(e) => {
-            const newNote = e.target.value;
+            const newNote = e.nativeEvent.text;
 
             this.setState(prevState => ({
               ...prevState,
@@ -64,7 +64,7 @@ class NewNote extends React.Component {
           <Button
             className="NewNote-button"
             title="Save"
-            onClick={() => {
+            onPress={() => {
               if (
                 this.state.note === '' ||
                 this.state.noteTitle === '') {

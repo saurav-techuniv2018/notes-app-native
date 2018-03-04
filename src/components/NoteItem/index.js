@@ -4,9 +4,11 @@ import { connect } from 'react-redux';
 import { withRouter } from 'react-router-native';
 import { Text, View } from 'react-native';
 
-import MaterialIcon from '../MaterialIcon';
+import Icon from '../Icon';
 import { noteShape } from '../../models/note';
 import { setCurrentNote } from '../../redux/actions';
+
+import * as styles from './NoteItem.style';
 
 class NoteItem extends React.Component {
   static mapDispatchToProps = dispatch => ({
@@ -17,18 +19,29 @@ class NoteItem extends React.Component {
   });
 
   render = () => (
-    <View className="NoteItem-container">
-      <View className="NoteItem-title-container">
-        <Text className="NoteItem-title">{this.props.note.title}</Text>
-        <MaterialIcon
+    <View
+      className="NoteItem-container"
+      style={styles.container}
+    >
+      <View
+        className="NoteItem-title-container"
+        style={styles.titleContainer}
+      >
+        <Text
+          className="NoteItem-title"
+          style={styles.title}
+        >{this.props.note.title}
+        </Text>
+        <Icon
           icon="&#xE254;"
           onClick={() => this.props.onEdit(this.props.note, this.props)}
-          style={{
-            cursor: 'pointer',
-          }}
         />
       </View>
-      <View className="NoteItem-note">{this.props.note.note}</View>
+      <Text
+        className="NoteItem-note"
+        style={styles.note}
+      >{this.props.note.note}
+      </Text>
     </View>
   );
 }

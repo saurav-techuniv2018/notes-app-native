@@ -73,6 +73,15 @@ class NotesApp extends React.Component {
           />
         ))}
       />
+      <Card
+        path="/edit-note"
+        render={(routeProps => (
+          <NotePage
+            {...routeProps}
+            note={this.props.currentNote}
+          />
+      ))}
+      />
     </Navigation>
   );
 }

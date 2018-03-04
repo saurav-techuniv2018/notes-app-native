@@ -17,7 +17,7 @@ class NotePage extends React.Component {
     onSave: ((note, ownProps) => {
       dispatch(addOrEditNote(note));
       dispatch(setCurrentNote(note));
-      ownProps.history.push('/all');
+      ownProps.history.goBack();
     }),
   });
 
@@ -34,7 +34,7 @@ class NotePage extends React.Component {
           charactersLimit={120}
           note={this.props.note}
           noteHint="Please type your note below"
-          onSave={note => this.props.onSave(note, this.props)}
+          onSave={(note) => { this.props.onSave(note, this.props); }}
         />
       </View>
       <Footer
