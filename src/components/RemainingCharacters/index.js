@@ -3,7 +3,16 @@ import { PropTypes } from 'prop-types';
 import { Text } from 'react-native';
 
 const RemainingCharacters = props => (
-  <Text className="RemainingCharacters">{`${props.count} ${props.itemLabel}`}</Text>
+  <Text
+    className="RemainingCharacters"
+    style={{
+      flexGrow: 1,
+      textAlign: 'right',
+      alignSelf: 'center',
+      fontSize: 16,
+    }}
+  >{`${props.count} ${props.itemLabel}`}
+  </Text>
 );
 
 RemainingCharacters.propTypes = {

@@ -7,6 +7,8 @@ import RemainingCharacters from '../RemainingCharacters';
 
 import { noteShape } from '../../models/note';
 
+import * as styles from './NewNote.style';
+
 class NewNote extends React.Component {
   constructor(props) {
     super(props);
@@ -21,9 +23,19 @@ class NewNote extends React.Component {
 
   render() {
     return (
-      <View className="NewNote-container">
-        <View className="NewNote-heading">
-          <Text className="NewNote-title">{this.props.title}</Text>
+      <View
+        className="NewNote-container"
+        style={styles.container}
+      >
+        <View
+          className="NewNote-heading"
+          style={styles.heading}
+        >
+          <Text
+            className="NewNote-title"
+            style={styles.title}
+          >{this.props.title}
+          </Text>
           <Button
             class="NewNote-button"
             title="en"
@@ -32,6 +44,7 @@ class NewNote extends React.Component {
         <TextInput
           type="text"
           className="NewNote-title-input"
+          style={styles.titleInput}
           placeholder={this.props.noteTitlePlaceholder}
           value={this.state.noteTitle}
           onChange={(e) => {
@@ -42,44 +55,60 @@ class NewNote extends React.Component {
             }));
           }}
         />
-        <View className="NewNote-note-heading">
-          <Text className="NewNote-note-hint">{this.props.noteHint}</Text>
-          <Icon icon={this.props.newNoteIcon} />
+        <View
+          className="NewNote-note-heading"
+          style={styles.noteHeading}
+        >
+          <Text
+            className="NewNote-note-hint"
+            style={styles.noteHint}
+          >{this.props.noteHint}
+          </Text>
+          <Icon
+            icon={this.props.newNoteIcon}
+            style={styles.newNoteIcon}
+          />
         </View>
         <TextInput
           value={this.state.note}
+          multiline
+          editable
           maxLength={this.state.charactersLimit}
           className={`NewNote-notes ${this.state.limitReaching ? 'NewNote-textarea-warning' : ''}`}
+          style={styles.notes}
           onChange={(e) => {
-            const newNote = e.nativeEvent.text;
+              const newNote = e.nativeEvent.text;
 
-            this.setState(prevState => ({
-              ...prevState,
-              note: newNote,
-              limitReaching: newNote.length >= this.state.charactersLimit,
-            }));
-          }}
+              this.setState(prevState => ({
+                ...prevState,
+                note: newNote,
+                limitReaching: newNote.length >= this.state.charactersLimit,
+              }));
+            }}
         />
-        <View className="NewNote-action-section">
+        <View
+          className="NewNote-action-section"
+          style={styles.actionSection}
+        >
           <Button
             className="NewNote-button"
             title="Save"
             onPress={() => {
-              if (
-                this.state.note === '' ||
-                this.state.noteTitle === '') {
-                return;
-              }
+                  if (
+                    this.state.note === '' ||
+                    this.state.noteTitle === '') {
+                    return;
+                  }
 
-              this.props.onSave({
-                id: this.props.note.id,
-                title: this.state.noteTitle,
-                note: this.state.note,
-              });
-              this.setState({
-                limitReaching: false,
-              });
-            }}
+                  this.props.onSave({
+                    id: this.props.note.id,
+                    title: this.state.noteTitle,
+                    note: this.state.note,
+                  });
+                  this.setState({
+                    limitReaching: false,
+                  });
+                }}
           />
           <RemainingCharacters
             count={this.state.charactersLimit - this.state.note.length}

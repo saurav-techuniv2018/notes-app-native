@@ -1,7 +1,7 @@
 // TODO Check result status
 
 const getNotes = () => new Promise((resolve, reject) => {
-  fetch('http://192.168.0.102:8080/api/notes')
+  fetch('http://172.30.204.27:8080/api/notes')
     .then(response => response.text())
     .then(json => JSON.parse(json))
     .then((payload) => {
@@ -20,7 +20,7 @@ const setNotes = notes => new Promise((resolve, reject) => {
     notes,
   });
 
-  fetch('http://192.168.0.102:8080/api/notes', {
+  fetch('http://172.30.204.27:8080/api/notes', {
     method: 'PUT',
     body: requestPayload,
   })

@@ -2,7 +2,7 @@ import { PropTypes } from 'prop-types';
 import React from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-native';
-import { View, Text } from 'react-native';
+import { View, Text, ScrollView } from 'react-native';
 
 import { addOrEditNote, setCurrentNote } from '../../redux/actions';
 
@@ -11,6 +11,8 @@ import NewNote from '../NewNote';
 import Footer from '../Footer';
 
 import { noteShape } from '../../models/note';
+
+import * as styles from './NotePage.style';
 
 class NotePage extends React.Component {
   static mapDispatchToProps = dispatch => ({
@@ -22,26 +24,26 @@ class NotePage extends React.Component {
   });
 
   render = () => (
-    <View className="NotePage-container">
-      <Text className="NotePage-header">
-        <Title value="Start taking notes" />
-      </Text>
-      <View className="NotePage-main">
-        <NewNote
-          title="Note Title"
-          noteTitlePlaceholder="Tasks for today"
-          newNoteIcon="&#xE14F;"
-          charactersLimit={120}
-          note={this.props.note}
-          noteHint="Please type your note below"
-          onSave={(note) => { this.props.onSave(note, this.props); }}
-        />
-      </View>
+    <ScrollView
+      className="NotePage-container"
+      style={styles.container}
+    >
+      <Title value="Start taking notes" />
+      <NewNote
+        style={styles.newNote}
+        title="Note Title"
+        noteTitlePlaceholder="Tasks for today"
+        newNoteIcon="&#xE14F;"
+        charactersLimit={120}
+        note={this.props.note}
+        noteHint="Please type your note below"
+        onSave={(note) => { this.props.onSave(note, this.props); }}
+      />
       <Footer
         label="About Us"
         onClick={() => { }}
       />
-    </View>
+    </ScrollView>
   );
 }
 

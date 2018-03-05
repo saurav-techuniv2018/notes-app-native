@@ -39,7 +39,7 @@ class AllNotes extends React.Component {
         style={styles.header}
       >
         <Title value="Saved Notes" />
-        {/* <Sync /> */}
+        <Sync />
       </View>
       <ScrollView
         className="AllNotes-main"
